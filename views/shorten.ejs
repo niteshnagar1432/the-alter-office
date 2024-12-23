@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #343a40;
+        color: white;
+      }
+      .navbar-brand {
+        font-weight: bold;
+        color: #0d6efd !important;
+      }
+      footer {
+        background-color: #495057;
+        padding: 20px 0;
+      }
+      .alert {
+        background-color: #0d6efd;
+        color: white;
+        font-size: 1.1rem;
+        text-align: center;
+        padding: 10px;
+        border-radius: 0;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Notification Bar -->
+    <div class="alert p-1 m-0" role="alert">
+      <% if (user && user.name) { %>
+        Welcome, <%= user.name %>!
+      <% } else { %>
+        Please log in using <a href="/auth/google">Google</a> to use our service.
+      <% } %>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand" href="/">URL Shortener</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/shorten">Shorten URL</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/analytics">Analytics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/auth/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5 py-5">
+      <h2>Shorten a URL</h2>
+      <form action="/shorten" method="POST">
+        <label for="longUrl">Long URL:</label>
+        <input
+          type="url"
+          id="longUrl"
+          name="longUrl"
+          required
+          class="form-control mb-3"
+        />
+
+        <label for="customAlias">Custom Alias (optional):</label>
+        <input
+          type="text"
+          id="customAlias"
+          name="customAlias"
+          class="form-control mb-3"
+        />
+
+        <label for="topic">Topic (optional):</label>
+        <select id="topic" name="topic" class="form-select mb-3">
+          <option value="">None</option>
+          <option value="acquisition">Acquisition</option>
+          <option value="activation">Activation</option>
+          <option value="retention">Retention</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Shorten URL</button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5">
+      <div class="container">
+        <p class="mb-0">© 2024 URL Shortener. All rights reserved.</p>
+        <small>Powered by Nitesh Nagar</small>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
