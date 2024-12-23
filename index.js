@@ -44,6 +44,15 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get("/privacy-policy", (req, res) => {
+  res.render("privacy-policy"); // Render privacy-policy.ejs view
+});
+
+// Terms of Service Page Route
+app.get("/terms-of-service", (req, res) => {
+  res.render("terms-of-service"); // Render terms-of-service.ejs view
+});
+
 app.use("/auth", authRoutes);
 app.use("/", urlRoutes);
 
