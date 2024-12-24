@@ -38,7 +38,7 @@
       <% if (user && user.name) { %>
         Welcome, <%= user.name %>!
       <% } else { %>
-        Please log in using <a href="/auth/google">Google</a> to use our service.
+        Please log in using <a class="alert-link" href="/auth/google">Google</a> to use our service.
       <% } %>
     </div>
 
@@ -68,9 +68,11 @@
             <li class="nav-item">
               <a class="nav-link" href="/user/analytics">Analytics</a>
             </li>
+            <% if (user && user.name) { %>
             <li class="nav-item">
               <a class="nav-link" href="/auth/logout">Logout</a>
             </li>
+            <% } %>
           </ul>
         </div>
       </div>
