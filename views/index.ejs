@@ -57,7 +57,9 @@
   <body>
     <!-- Notification Bar -->
     <div class="alert p-1 m-0" role="alert">
-      Please log in using <a href="/auth/google">Google</a> to use our service.
+      <%= if (user && user.name) { %>
+      Welcome, <%= user.name %>! <% } else { %> Please log in using
+      <a href="/auth/google">Google</a> to use our service. <% } %>
     </div>
 
     <!-- Navigation Bar -->
@@ -86,6 +88,11 @@
             <li class="nav-item">
               <a class="nav-link" href="/user/analytics">Analytics</a>
             </li>
+            <%= if (user && user.name) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/dashboard">Dash Board</a>
+            </li>
+            <%= } %>
           </ul>
         </div>
       </div>

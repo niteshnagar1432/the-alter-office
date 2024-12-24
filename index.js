@@ -60,7 +60,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Sample route
 app.get("/", (req, res) => {
-  res.render("index", { title: "Home" });
+  let user = req.user;
+  res.render("index", { title: "Home", user });
 });
 
 app.get("/user/shorten", (req, res) => {
